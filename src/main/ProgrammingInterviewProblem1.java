@@ -2,7 +2,7 @@ package main;
 
 import java.util.ArrayList;
 
-public class ProgrammingInterviewProblems {
+public class ProgrammingInterviewProblem1 {
 
     /**
      * Return the missing number in a given integer array of 1 to 100 (sorted)
