@@ -11,11 +11,16 @@ public class User {
         return vendingMachine.getProductPrice(productCode);
     }
 
-    public Product getProductBack(VendingMachine vendingMachine, String productCode) {
+    public Product getProductBack(VendingMachine vendingMachine, String productCode) throws UserNeedsToInsertMoreMoneyException {
         try {
             return vendingMachine.dispenseProduct(productCode);
-        } catch (NotEnoughMoneyException e) {
-            throw new RuntimeException(e);
+        } catch (NotEnoughMoneyException notEnoughMoneyException) {
+            Product product = notEnoughMoneyException.getProduct();
+            int price = notEnoughMoneyException.getPrice();
+            int totalAmount = vendingMachine.getTotalAmount();
+            int balance = price - totalAmount;
+            String productName = product.getProductName();
+            throw new UserNeedsToInsertMoreMoneyException(String.format("User needs to insert %d more cents to buy %s", balance, productName));
         }
     }
 

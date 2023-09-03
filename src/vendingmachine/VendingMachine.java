@@ -8,14 +8,18 @@ import java.util.HashSet;
 public class VendingMachine {
 
     private int totalAmount;
-    private Map<String, VendingMachineProduct> productCodeToVendingMachineProductMap;
+    private final Map<String, VendingMachineProduct> productCodeToVendingMachineProductMap;
 
     public VendingMachine() {
         totalAmount = 0;
         productCodeToVendingMachineProductMap = new HashMap<>();
         productCodeToVendingMachineProductMap.put("A", new VendingMachineProduct(new Chocolate("Hershey Bar"), 85));
         productCodeToVendingMachineProductMap.put("B", new VendingMachineProduct(new Candy("Gummy Bears"), 80));
-        productCodeToVendingMachineProductMap.put("C", new VendingMachineProduct(new ColdDrink("Coca Cola"), 74));
+        productCodeToVendingMachineProductMap.put("C", new VendingMachineProduct(new ColdDrink("Coca-Cola"), 74));
+    }
+
+    public int getTotalAmount() {
+        return totalAmount;
     }
 
     public String getProductCode(String productName) throws OutOfStockException {
@@ -40,7 +44,7 @@ public class VendingMachine {
             totalAmount -= price;
             return product;
         } else {
-            throw new NotEnoughMoneyException(String.format("This %s is %d cents", product, price));
+            throw new NotEnoughMoneyException(product, price);
         }
     }
 
@@ -72,9 +76,9 @@ public class VendingMachine {
         return productCodeToVendingMachineProductMap.get(productCode).getPrice();
     }
 
-    private class VendingMachineProduct {
-        private Product product;
-        private int price;
+    private static class VendingMachineProduct {
+        private final Product product;
+        private final int price;
 
         public VendingMachineProduct(Product product, int price) {
             this.product = product;

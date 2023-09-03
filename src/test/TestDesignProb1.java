@@ -4,9 +4,11 @@ import org.junit.Before;
 import org.junit.Test;
 import vendingmachine.*;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import static org.junit.Assert.*;
+
 
 public class TestDesignProb1 {
 
@@ -20,14 +22,21 @@ public class TestDesignProb1 {
     }
 
     @Test
-    public void testUserInsertsCoinsWorthNinetyCentsAndGetsBackHersheyBarChocolateAndFiveCents() {
-        user.insertCoin(new Quarter(), vendingMachine); // 25 cents
-        user.insertCoin(new Quarter(), vendingMachine); // 50 cents
-        user.insertCoin(new Dime(), vendingMachine); // 60 cents
-        user.insertCoin(new Dime(), vendingMachine); // 70 cents
-        user.insertCoin(new Dime(), vendingMachine); // 80 cents
-        user.insertCoin(new Nickel(), vendingMachine); // 85 cents
-        user.insertCoin(new Nickel(), vendingMachine); // 90 cents
+    public void testUserInsertsNinetyCentsAndGetsBackHersheyBarChocolateAndFiveCents() throws UserNeedsToInsertMoreMoneyException {
+        Collection<Coin> wallet = Arrays.asList(
+                new Quarter(), // 25 cents
+                new Quarter(), // 50 cents
+                new Dime(), // 60 cents
+                new Dime(), // 70 cents
+                new Dime(), // 80 cents
+                new Nickel(), // 85 cents
+                new Nickel() // 90 cents
+        );
+
+        for (Coin coin : wallet) {
+            user.insertCoin(coin, vendingMachine);
+        }
+
         String productName = "Hershey Bar";
         String productCode = user.seeProductCode(vendingMachine, productName);
         Product chocolate = user.getProductBack(vendingMachine, productCode);
@@ -38,14 +47,21 @@ public class TestDesignProb1 {
     }
 
     @Test
-    public void testUserInsertsCoinsWorthNinetyCentsAndGetsBackGummyBearsCandyAndFiveCents() {
-        user.insertCoin(new Quarter(), vendingMachine); // 25 cents
-        user.insertCoin(new Quarter(), vendingMachine); // 50 cents
-        user.insertCoin(new Dime(), vendingMachine); // 60 cents
-        user.insertCoin(new Dime(), vendingMachine); // 70 cents
-        user.insertCoin(new Dime(), vendingMachine); // 80 cents
-        user.insertCoin(new Nickel(), vendingMachine); // 85 cents
-        user.insertCoin(new Nickel(), vendingMachine); // 90 cents
+    public void testUserInsertsNinetyCentsAndGetsBackGummyBearsCandyAndFiveCents() throws UserNeedsToInsertMoreMoneyException {
+        Collection<Coin> wallet = Arrays.asList(
+                new Quarter(), // 25 cents
+                new Quarter(), // 50 cents
+                new Dime(), // 60 cents
+                new Dime(), // 70 cents
+                new Dime(), // 80 cents
+                new Nickel(), // 85 cents
+                new Nickel() // 90 cents
+        );
+
+        for (Coin coin : wallet) {
+            user.insertCoin(coin, vendingMachine);
+        }
+
         String productName = "Gummy Bears";
         String productCode = user.seeProductCode(vendingMachine, productName);
         Product chocolate = user.getProductBack(vendingMachine, productCode);
@@ -56,15 +72,22 @@ public class TestDesignProb1 {
     }
 
     @Test
-    public void testUserInsertsNinetyCentsAndGetsBackCocaColaColdDrinkAndDime() {
-        user.insertCoin(new Quarter(), vendingMachine); // 25 cents
-        user.insertCoin(new Quarter(), vendingMachine); // 50 cents
-        user.insertCoin(new Dime(), vendingMachine); // 60 cents
-        user.insertCoin(new Dime(), vendingMachine); // 70 cents
-        user.insertCoin(new Dime(), vendingMachine); // 80 cents
-        user.insertCoin(new Nickel(), vendingMachine); // 85 cents
-        user.insertCoin(new Nickel(), vendingMachine); // 90 cents
-        String productName = "Coca Cola";
+    public void testUserInsertsNinetyCentsAndGetsBackCocaColaColdDrinkAndDime() throws UserNeedsToInsertMoreMoneyException {
+        Collection<Coin> wallet = Arrays.asList(
+                new Quarter(), // 25 cents
+                new Quarter(), // 50 cents
+                new Dime(), // 60 cents
+                new Dime(), // 70 cents
+                new Dime(), // 80 cents
+                new Nickel(), // 85 cents
+                new Nickel() // 90 cents
+        );
+
+        for (Coin coin : wallet) {
+            user.insertCoin(coin, vendingMachine);
+        }
+
+        String productName = "Coca-Cola";
         String productCode = user.seeProductCode(vendingMachine, productName);
         Product chocolate = user.getProductBack(vendingMachine, productCode);
         assertEquals(productName, chocolate.getProductName());
@@ -73,7 +96,26 @@ public class TestDesignProb1 {
         assertEquals(90 - price, calculateAmount(change));
     }
 
-    private int calculateAmount(Collection<Coin> change) {
+    @Test
+    public void testUserInsertsSeventyCentsAndNeedsToInsertFourMoreCentsToGetBackCocaColaColdDrink() {
+        Collection<Coin> wallet = Arrays.asList(
+                new Quarter(), // 25 cents
+                new Quarter(), // 50 cents
+                new Dime(), // 60 cents
+                new Dime() // 70 cents
+        );
+
+        for (Coin coin : wallet) {
+            user.insertCoin(coin, vendingMachine);
+        }
+
+        String productName = "Coca-Cola";
+        String productCode = user.seeProductCode(vendingMachine, productName);
+        UserNeedsToInsertMoreMoneyException userNeedsToInsertMoreMoneyException = assertThrows(UserNeedsToInsertMoreMoneyException.class, () -> user.getProductBack(vendingMachine, productCode));
+        assertEquals("User needs to insert 4 more cents to buy Coca-Cola", userNeedsToInsertMoreMoneyException.getMessage());
+    }
+
+    private int calculateAmount(@org.jetbrains.annotations.NotNull Collection<Coin> change) {
         int amount = 0;
         for (Coin coin : change) {
             amount += coin.getAmount();
