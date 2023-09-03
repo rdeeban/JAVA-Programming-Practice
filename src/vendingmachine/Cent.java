@@ -1,8 +1,8 @@
 package vendingmachine;
 
-public class Dime implements Coin {
+public class Cent implements Coin {
     @Override
     public int getAmount() {
-        return 10;
+        return 1;
     }
 }

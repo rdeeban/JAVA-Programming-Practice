@@ -1,4 +1,8 @@
 package vendingmachine;
 
-public class Quarter extends Coin {
+public class Quarter implements Coin {
+    @Override
+    public int getAmount() {
+        return 25;
+    }
 }

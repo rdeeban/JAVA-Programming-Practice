@@ -1,7 +1,6 @@
 package vendingmachine;
 
-import java.util.Collection;
+public interface Coin {
 
-public abstract class Coin {
-
+    int getAmount();
 }

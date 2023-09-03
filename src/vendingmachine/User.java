@@ -4,18 +4,30 @@ import java.util.Collection;
 
 public class User {
     public void insertCoin(Coin coin, VendingMachine vendingMachine) {
-        // todo: implement this function
         vendingMachine.acceptCoin(coin);
-        throw new UnsupportedOperationException("Inserting a coin is not supported yet.");
     }
 
-    public Product getProductBack(VendingMachine vendingMachine) {
-        // todo: implement this function
-        throw new UnsupportedOperationException("Getting a product back is not supported yet.");
+    public int askPrice(VendingMachine vendingMachine, String productCode) {
+        return vendingMachine.getProductPrice(productCode);
+    }
+
+    public Product getProductBack(VendingMachine vendingMachine, String productCode) {
+        try {
+            return vendingMachine.dispenseProduct(productCode);
+        } catch (NotEnoughMoneyException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public Collection<Coin> getChangeBack(VendingMachine vendingMachine) {
-        // todo: implement this function
-        throw new UnsupportedOperationException("Getting change back is not supported yet.");
+        return vendingMachine.dispenseChange();
+    }
+
+    public String seeProductCode(VendingMachine vendingMachine, String productName) {
+        try {
+            return vendingMachine.getProductCode(productName);
+        } catch (OutOfStockException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
