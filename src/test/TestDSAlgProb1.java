@@ -3,12 +3,12 @@ package test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
-import main.ProgrammingInterviewProblem1;
+import arrays.ArrayFunctions;
 import org.junit.Test;
 
 import java.util.ArrayList;
 
-public class TestProgrammingInterviewProblem1 {
+public class TestDSAlgProb1 {
 
     private static ArrayList<Integer> prob1Arr;
 
@@ -18,7 +18,7 @@ public class TestProgrammingInterviewProblem1 {
         for (int i = 1; i <= 100; i ++)
             prob1Arr.add(i);
 
-        Throwable exception = assertThrows(IllegalArgumentException.class, () -> ProgrammingInterviewProblem1.findMissingNumber(prob1Arr));
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> ArrayFunctions.findMissingNumber(prob1Arr));
         assertEquals("Invalid input: there are no numbers missing.", exception.getMessage());
     }
 
@@ -29,7 +29,7 @@ public class TestProgrammingInterviewProblem1 {
             if (i != 1)
                 prob1Arr.add(i);
 
-        int missingNumber = ProgrammingInterviewProblem1.findMissingNumber(prob1Arr);
+        int missingNumber = ArrayFunctions.findMissingNumber(prob1Arr);
         assertEquals(1, missingNumber);
     }
 
@@ -40,7 +40,7 @@ public class TestProgrammingInterviewProblem1 {
             if (i != 100)
                 prob1Arr.add(i);
 
-        int missingNumber = ProgrammingInterviewProblem1.findMissingNumber(prob1Arr);
+        int missingNumber = ArrayFunctions.findMissingNumber(prob1Arr);
         assertEquals(100, missingNumber);
     }
 
@@ -51,7 +51,7 @@ public class TestProgrammingInterviewProblem1 {
             if (i != 2)
                 prob1Arr.add(i);
 
-        int missingNumber = ProgrammingInterviewProblem1.findMissingNumber(prob1Arr);
+        int missingNumber = ArrayFunctions.findMissingNumber(prob1Arr);
         assertEquals(2, missingNumber);
     }
 }
