@@ -1,9 +1,6 @@
 package arrays;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class ArrayFunctions {
 
@@ -49,5 +46,18 @@ public class ArrayFunctions {
                 "Invalid input: there is no duplicate number.");
 
         return 0;
+    }
+
+    /**
+     * Return the largest and smallest number given an unsorted integer array
+     */
+    public static AbstractMap.SimpleEntry<Integer, Integer> findLargestAndSmallestNumber(int[] arr) {
+        int maxNum = Integer.MIN_VALUE, minNum = Integer.MAX_VALUE;
+        for (int j : arr) {
+            if (j > maxNum) maxNum = j;
+            if (j < minNum) minNum = j;
+        }
+
+        return new AbstractMap.SimpleEntry<>(maxNum, minNum);
     }
 }
