@@ -1,0 +1,6 @@
+How is an integer array sorted in place using the quicksort algorithm?
+
+The quicksort algorithm sorts an integer array by first partitioning the array into two subarrays.
+It then sorts the two subarrays using recursive calls to quicksort.
+Because the two subarrays are sorted, the entire array is now sorted.
+Quicksort is in place because constant memory is required to sort the array.
