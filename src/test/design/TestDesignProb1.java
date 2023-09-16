@@ -115,7 +115,7 @@ public class TestDesignProb1 {
         assertEquals("User needs to insert 4 more cents to buy Coca-Cola", userNeedsToInsertMoreMoneyException.getMessage());
     }
 
-    private int calculateAmount(@org.jetbrains.annotations.NotNull Collection<Coin> change) {
+    private int calculateAmount(Collection<Coin> change) {
         int amount = 0;
         for (Coin coin : change) {
             amount += coin.getAmount();

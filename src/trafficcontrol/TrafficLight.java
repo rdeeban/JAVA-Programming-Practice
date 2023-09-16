@@ -32,5 +32,14 @@ public class TrafficLight {
      */
     public void operateFor(int duration) {
         operationTime += duration;
+        if (light == Light.RED && operationTime == duration) {
+            light = Light.GREEN;
+        }
+        else if (light == Light.GREEN && operationTime == duration + duration) {
+            light = Light.ORANGE;
+        }
+        else if (light == Light.ORANGE && operationTime == duration + duration + duration) {
+            light = Light.RED;
+        }
     }
 }
