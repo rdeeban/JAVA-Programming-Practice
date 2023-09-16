@@ -1,4 +1,4 @@
-package test;
+package test.arrays;
 
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ public class TestDSAlgProb4 {
     public void testProblem4ArrayOfLength2NoPairExists() {
         int[] arr = new int[]{1, 2};
         List<AbstractMap.SimpleEntry<Integer,Integer>> pairs = findAllPairsOfNumbersThatSumToANumber(arr, 1);
-        List<AbstractMap.SimpleEntry<Integer,Integer>> expectedPairs = Arrays.asList();
+        List<AbstractMap.SimpleEntry<Integer,Integer>> expectedPairs = List.of();
         assertEquals(expectedPairs, pairs);
     }
 
@@ -23,7 +23,7 @@ public class TestDSAlgProb4 {
     public void testProblem4ArrayOfLength2OnePairExists() {
         int[] arr = new int[]{1, 2};
         List<AbstractMap.SimpleEntry<Integer,Integer>> pairs = findAllPairsOfNumbersThatSumToANumber(arr, 3);
-        List<AbstractMap.SimpleEntry<Integer,Integer>> expectedPairs = Arrays.asList(new AbstractMap.SimpleEntry<>(1, 2));
+        List<AbstractMap.SimpleEntry<Integer,Integer>> expectedPairs = List.of(new AbstractMap.SimpleEntry<>(1, 2));
         assertEquals(expectedPairs, pairs);
     }
 
@@ -31,7 +31,7 @@ public class TestDSAlgProb4 {
     public void testProblem4ArrayOfLength3NoPairExists() {
         int[] arr = new int[]{1, 2, 3};
         List<AbstractMap.SimpleEntry<Integer,Integer>> pairs = findAllPairsOfNumbersThatSumToANumber(arr, 1);
-        List<AbstractMap.SimpleEntry<Integer,Integer>> expectedPairs = Arrays.asList();
+        List<AbstractMap.SimpleEntry<Integer,Integer>> expectedPairs = List.of();
         assertEquals(expectedPairs, pairs);
     }
 
@@ -39,7 +39,7 @@ public class TestDSAlgProb4 {
     public void testProblem4ArrayOfLength3OnePairExists() {
         int[] arr = new int[]{1, 2, 3};
         List<AbstractMap.SimpleEntry<Integer,Integer>> pairs = findAllPairsOfNumbersThatSumToANumber(arr, 3);
-        List<AbstractMap.SimpleEntry<Integer,Integer>> expectedPairs = Arrays.asList(new AbstractMap.SimpleEntry<>(1, 2));
+        List<AbstractMap.SimpleEntry<Integer,Integer>> expectedPairs = List.of(new AbstractMap.SimpleEntry<>(1, 2));
         assertEquals(expectedPairs, pairs);
     }
 

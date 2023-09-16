@@ -151,4 +151,14 @@ public class ArrayFunctions {
         arr[i] = arr[j];
         arr[j] = tmp;
     }
+
+    /**
+     * Return a list with elements in reverse order
+     */
+    public static void reverseArrayInPlace(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n / 2; i ++) {
+            swap(arr, i, n - i - 1);
+        }
+    }
 }

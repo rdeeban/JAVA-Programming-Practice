@@ -1,4 +1,4 @@
-package test;
+package test.design;
 
 import org.junit.Test;
 import urlshortener.UrlShortener;

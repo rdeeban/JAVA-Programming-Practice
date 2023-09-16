@@ -1,4 +1,4 @@
-package test;
+package test.arrays;
 
 import org.junit.Test;
 
@@ -13,7 +13,7 @@ public class TestDSAlgProb6 {
     public void testProblem6ArrayOfLength2With1Duplicates() {
         int[] arr = new int[]{1, 1};
         List<Integer> uniqueNumList = removeDuplicatesFromArray(arr);
-        List<Integer> expected = Arrays.asList(1);
+        List<Integer> expected = List.of(1);
         assertEquals(expected, uniqueNumList);
     }
 
@@ -21,7 +21,7 @@ public class TestDSAlgProb6 {
     public void testProblem6ArrayOfLength3With2Duplicates() {
         int[] arr = new int[]{1, 1, 1};
         List<Integer> uniqueNumList = removeDuplicatesFromArray(arr);
-        List<Integer> expected = Arrays.asList(1);
+        List<Integer> expected = List.of(1);
         assertEquals(expected, uniqueNumList);
     }
 
