@@ -1,8 +1,8 @@
 package linkedlist;
 
-
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Stack;
 
 public class LinkedListFunctions {
 
@@ -88,8 +88,10 @@ public class LinkedListFunctions {
     public static void removeDuplicates(LinkedList list) {
         LinkedList.Node cur = list.head;
         Set<Integer> seen = new HashSet<>();
+        seen.add(cur.data);
+        LinkedList.Node next;
         while (cur.next != null) {
-            LinkedList.Node next = cur.next;
+            next = cur.next;
             if (seen.contains(next.data)) {
                 cur.next = next.next;
                 next = cur.next;
@@ -98,5 +100,76 @@ public class LinkedListFunctions {
                 cur = cur.next;
             }
         }
+    }
+
+    /**
+     * Find the third node's data from the end
+     */
+    public static int findThirdNodeFromEnd(LinkedList list) {
+        LinkedList.Node cur = list.head;
+        LinkedList.Node twoAfterCur = cur;
+        twoAfterCur = twoAfterCur.next;
+        twoAfterCur = twoAfterCur.next;
+        while (twoAfterCur.next != null) {
+            cur = cur.next;
+            twoAfterCur = twoAfterCur.next;
+        }
+
+        return cur.data;
+    }
+
+    /**
+     * Find the sum of two linked lists using Stack
+     */
+    public static int findSum(LinkedList list1, LinkedList list2) {
+        Stack<Integer> stack1 = getStackFromLinkedList(list1);
+        Stack<Integer> stack2 = getStackFromLinkedList(list2);
+        int sum = 0;
+        int exp = 0;
+        int base = 10;
+        int mantissa;
+        int carryOver = 0;
+        while (!stack1.empty() && !stack2.empty()) {
+            int val1 = stack1.pop();
+            int val2 = stack2.pop();
+            int sumOfValues = val1 + val2 + carryOver;
+            mantissa = sumOfValues % base;
+            carryOver = sumOfValues / base;
+            sum += (int) (mantissa * Math.pow(base, exp));
+            exp ++;
+        }
+
+        while (!stack1.empty()) {
+            int val1 = stack1.pop();
+            mantissa = val1 % base;
+            carryOver = val1 / base;
+            sum += (int) (mantissa * Math.pow(base, exp));
+            exp ++;
+        }
+
+        while (!stack2.empty()) {
+            int val2 = stack2.pop();
+            mantissa = val2 % base;
+            carryOver = val2 / base;
+            sum += (int) (mantissa * Math.pow(base, exp));
+            exp ++;
+        }
+
+        if (carryOver == 1) {
+            sum += (int) (Math.pow(base, exp));
+        }
+
+        return sum;
+    }
+
+    private static Stack<Integer> getStackFromLinkedList(LinkedList list) {
+        Stack<Integer> stack = new Stack<>();
+        LinkedList.Node cur = list.head;
+        while (cur != null) {
+            stack.push(cur.data);
+            cur = cur.next;
+        }
+
+        return stack;
     }
 }

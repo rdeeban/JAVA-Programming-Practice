@@ -65,9 +65,9 @@ public class LinkedList {
     public int length() {
         Node cur = head;
         int length = 0;
-        while (cur.next != null) {
-            cur = cur.next;
+        while (cur != null) {
             length ++;
+            cur = cur.next;
         }
 
         return length;
