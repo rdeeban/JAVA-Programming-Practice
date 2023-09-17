@@ -61,4 +61,15 @@ public class LinkedList {
         if (cur == null) throw new IllegalArgumentException(String.format("Invalid index: %d", index));
         return cur.data;
     }
+
+    public int length() {
+        Node cur = head;
+        int length = 0;
+        while (cur.next != null) {
+            cur = cur.next;
+            length ++;
+        }
+
+        return length;
+    }
 }

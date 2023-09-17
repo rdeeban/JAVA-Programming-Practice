@@ -1,6 +1,9 @@
 package linkedlist;
 
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class LinkedListFunctions {
 
     /**
@@ -76,6 +79,24 @@ public class LinkedListFunctions {
 
             next.next = cur;
             list.head = next;
+        }
+    }
+
+    /**
+     * Remove duplicates in a Linked List
+     */
+    public static void removeDuplicates(LinkedList list) {
+        LinkedList.Node cur = list.head;
+        Set<Integer> seen = new HashSet<>();
+        while (cur.next != null) {
+            LinkedList.Node next = cur.next;
+            if (seen.contains(next.data)) {
+                cur.next = next.next;
+                next = cur.next;
+            } else {
+                seen.add(next.data);
+                cur = cur.next;
+            }
         }
     }
 }
