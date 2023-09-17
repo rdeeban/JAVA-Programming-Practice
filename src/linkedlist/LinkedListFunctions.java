@@ -1,24 +1,26 @@
-package arrays;
+package linkedlist;
 
-import java.util.Iterator;
-import java.util.LinkedList;
 
 public class LinkedListFunctions {
 
     /**
      * Find the middle element of a singly linked list in one pass
      */
-    public static int findMiddleElement(LinkedList<Integer> list) {
-        // start two pointers at the head
-        // at each iteration, progress one pointer by one node and the other pointer by two nodes
-        // when the other reaches the end, the first will be pointing at the middle element
-        Iterator<Integer> slow = list.iterator();
-        Iterator<Integer> fast = list.iterator();
-        while (fast != null) {
-            slow.next();
-            fast.next();
-            fast.next();
+    public static int findMiddleElement(LinkedList list) {
+        LinkedList.Node slow = list.head;
+        LinkedList.Node fast = list.head;
+        while(fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
         }
-        return slow.next();
+
+        return slow.data;
+    }
+
+    /**
+     * Check if a linked list contains a cycle
+     */
+    public static boolean containsCycle(LinkedList list) {
+        return false;
     }
 }
