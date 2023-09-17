@@ -13,12 +13,18 @@ public class LinkedList {
         }
     }
 
+    /**
+     * Constructs a Linked List
+     */
     public LinkedList(int... nums) {
         for (int i = nums.length - 1; i >= 0; i --) {
-            push(nums[i]);
+            add(nums[i]);
         }
     }
 
+    /**
+     * Constructs a (Circular) Linked List
+     */
     public LinkedList(boolean circular, int... nums) {
         this(nums);
         if (circular) {
@@ -31,17 +37,28 @@ public class LinkedList {
         }
     }
 
-    /* Inserts a new Node at front of the list. */
-    public void push(int new_data)
-    {
-        /* 1 & 2: Allocate the Node &
-                  Put in the data*/
-        Node new_node = new Node(new_data);
+    /**
+     * Inserts a new Node at front of the list.
+     */
+    public void add(int data) {
+        Node newNode = new Node(data);
+        newNode.next = head;
+        head = newNode;
+    }
 
-        /* 3. Make next of new Node as head */
-        new_node.next = head;
+    /**
+     * Gets the node at index
+     */
+    public int get(int index) {
+        Node cur = head;
+        int curIndex = 0;
+        while (cur.next != null) {
+            if (curIndex == index) return cur.data;
+            cur = cur.next;
+            curIndex ++;
+        }
 
-        /* 4. Move the head to point to new Node */
-        head = new_node;
+        if (cur == null) throw new IllegalArgumentException(String.format("Invalid index: %d", index));
+        return cur.data;
     }
 }

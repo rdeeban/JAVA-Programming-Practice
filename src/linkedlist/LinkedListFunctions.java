@@ -36,4 +36,46 @@ public class LinkedListFunctions {
 
         return fast == slow && numIters > 0;
     }
+
+    /**
+     * Reverse a Linked List using recursion
+     */
+    public static void reverseLinkedListUsingRecursion(LinkedList list) {
+        if (list.head.next != null) {
+            list.head = getHeadOfReversed(list.head);
+        }
+    }
+
+    private static LinkedList.Node getHeadOfReversed(LinkedList.Node node) {
+        if (node.next != null) {
+            LinkedList.Node tmp = node.next;
+            LinkedList.Node reversed = getHeadOfReversed(node.next);
+            node.next = null;
+            tmp.next = node;
+            return reversed;
+        }
+
+        return node;
+    }
+
+    /**
+     * Reverse a Linked List using a loop
+     */
+    public static void reverseLinkedListUsingLoop(LinkedList list) {
+        LinkedList.Node cur = list.head;
+        if (cur.next != null) {
+            LinkedList.Node next = cur.next;
+            cur.next = null;
+            LinkedList.Node tmp;
+            while (next.next != null) {
+                tmp = next.next;
+                next.next = cur;
+                cur = next;
+                next = tmp;
+            }
+
+            next.next = cur;
+            list.head = next;
+        }
+    }
 }
