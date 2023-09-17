@@ -18,5 +18,35 @@ public class TestDSAlgProb2 {
         containsCycle = LinkedListFunctions.containsCycle(list);
         exp = true;
         Assert.assertEquals(exp, containsCycle);
+
+        list = new LinkedList(1, 2);
+        containsCycle = LinkedListFunctions.containsCycle(list);
+        exp = false;
+        Assert.assertEquals(exp, containsCycle);
+
+        list = new LinkedList(true, 1, 2);
+        containsCycle = LinkedListFunctions.containsCycle(list);
+        exp = true;
+        Assert.assertEquals(exp, containsCycle);
+
+        list = new LinkedList(1, 2, 3);
+        containsCycle = LinkedListFunctions.containsCycle(list);
+        exp = false;
+        Assert.assertEquals(exp, containsCycle);
+
+        list = new LinkedList(true, 1, 2, 3);
+        containsCycle = LinkedListFunctions.containsCycle(list);
+        exp = true;
+        Assert.assertEquals(exp, containsCycle);
+
+        list = new LinkedList(1, 2, 3, 4);
+        containsCycle = LinkedListFunctions.containsCycle(list);
+        exp = false;
+        Assert.assertEquals(exp, containsCycle);
+
+        list = new LinkedList(true, 1, 2, 3, 4);
+        containsCycle = LinkedListFunctions.containsCycle(list);
+        exp = true;
+        Assert.assertEquals(exp, containsCycle);
     }
 }

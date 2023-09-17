@@ -5,8 +5,6 @@ import linkedlist.LinkedListFunctions;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.List;
-
 public class TestDSAlgProb1 {
 
     @Test
@@ -18,7 +16,7 @@ public class TestDSAlgProb1 {
 
         list = new LinkedList(1, 2);
         midElem = LinkedListFunctions.findMiddleElement(list);
-        exp = 1;
+        exp = 2;
         Assert.assertEquals(exp, midElem);
 
         list = new LinkedList(1, 2, 3);
@@ -28,7 +26,7 @@ public class TestDSAlgProb1 {
 
         list = new LinkedList(1, 2, 3, 4);
         midElem = LinkedListFunctions.findMiddleElement(list);
-        exp = 2;
+        exp = 3;
         Assert.assertEquals(exp, midElem);
     }
 }

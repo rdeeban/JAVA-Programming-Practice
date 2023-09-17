@@ -3,7 +3,7 @@ package linkedlist;
 public class LinkedList {
     Node head;
 
-    class Node {
+    static class Node {
         int data;
         Node next;
         Node(int d)
@@ -14,8 +14,8 @@ public class LinkedList {
     }
 
     public LinkedList(int... nums) {
-        for (int num : nums) {
-            push(num);
+        for (int i = nums.length - 1; i >= 0; i --) {
+            push(nums[i]);
         }
     }
 

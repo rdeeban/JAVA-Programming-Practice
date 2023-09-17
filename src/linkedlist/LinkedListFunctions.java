@@ -14,6 +14,7 @@ public class LinkedListFunctions {
             slow = slow.next;
         }
 
+        assert slow != null;
         return slow.data;
     }
 
@@ -21,6 +22,18 @@ public class LinkedListFunctions {
      * Check if a linked list contains a cycle
      */
     public static boolean containsCycle(LinkedList list) {
-        return false;
+        LinkedList.Node slow = list.head;
+        LinkedList.Node fast = list.head;
+        int numIters = 0;
+        while(fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            numIters ++;
+            if (fast == slow) {
+                break;
+            }
+        }
+
+        return fast == slow && numIters > 0;
     }
 }
