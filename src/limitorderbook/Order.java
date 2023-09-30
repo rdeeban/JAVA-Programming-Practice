@@ -53,14 +53,6 @@ public class Order implements Comparable<Order> {
 
     @Override
     public int compareTo(Order order) {
-        if (price == order.price) {
-            return time - order.time;
-        }
-
-        if (order.orderType == OrderType.BUY) {
-            return (int) (-(price - order.price) * 100);
-        } else {
-            return (int) ((price - order.price) * 100);
-        }
+        return time - order.time;
     }
 }
