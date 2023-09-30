@@ -31,6 +31,10 @@ public class Order {
         return price;
     }
 
+    public PriceType getPriceType() {
+        return priceType;
+    }
+
     public int getSize() {
         return size;
     }
