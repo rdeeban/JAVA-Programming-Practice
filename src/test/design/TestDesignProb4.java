@@ -22,8 +22,8 @@ public class TestDesignProb4 {
         );
         OrderBook orderBook = new OrderBook(buyOrders, sellOrders);
         orderBook.match(
-                new Order(OrderType.BUY, 1),
-                new Order(OrderType.SELL, 1)
+                new Order(1, OrderType.BUY, 1),
+                new Order(2, OrderType.SELL, 1)
         );
         List<Order> remainingBuyOrders = List.of(
                 new Order(OrderType.BUY, 1, 0.98)

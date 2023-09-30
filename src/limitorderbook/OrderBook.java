@@ -61,6 +61,7 @@ public class OrderBook {
     }
 
     public void match(Order... orders) {
+        Arrays.sort(orders);
         for (Order order : orders) {
             String orderTypeName;
             LinkedList<OrderBookEntry> orderBookEntries;
@@ -75,6 +76,7 @@ public class OrderBook {
             }
 
             int currentOrderSize = order.getSize();
+            double currentOrderPrice = order.getPrice();
             do {
                 OrderBookEntry currentOrderBookEntry;
                 try {
@@ -84,7 +86,7 @@ public class OrderBook {
                             orderTypeName));
                 }
 
-                currentOrderSize = currentOrderSize - currentOrderBookEntry.size;
+                currentOrderSize -= currentOrderBookEntry.size;
                 if (currentOrderSize <= 0) {
                     orderBookEntries.removeFirst();
                 } else {
