@@ -27,11 +27,11 @@ public class StringFunctions {
      */
     public static boolean checkTwoStringsAreAnagrams(String s1, String s2) {
         Map<Character, Integer> h1 = new HashMap<>();
-        Map<Character, Integer> h2 = new HashMap<>();
         for (char c : s1.toCharArray()) {
             h1.put(c, h1.getOrDefault(c, 0) + 1);
         }
 
+        Map<Character, Integer> h2 = new HashMap<>();
         for (char c : s2.toCharArray()) {
             h2.put(c, h2.getOrDefault(c, 0) + 1);
         }
@@ -89,5 +89,40 @@ public class StringFunctions {
         }
 
         return hasOnlyDigits;
+    }
+
+    /**
+     * Count the number of vowels and consonants in a given string
+     */
+    public static AbstractMap.SimpleEntry<Integer, Integer> countNumVowelsAndConsonants(String s) {
+        Set<Character> vowels = new HashSet<>();
+        vowels.add('a');
+        vowels.add('e');
+        vowels.add('i');
+        vowels.add('o');
+        vowels.add('u');
+        int numVowels = 0;
+        int numConsonants = 0;
+        for (char c : s.toCharArray()) {
+            if (vowels.contains(c)) {
+                numVowels ++;
+            } else {
+                numConsonants ++;
+            }
+        }
+
+        return new AbstractMap.SimpleEntry<>(numVowels, numConsonants);
+    }
+
+    /**
+     * Count character occurrence
+     */
+    public static int countCharacterOccurrence(String s, char c) {
+        Map<Character, Integer> h = new HashMap<>();
+        for (char ch : s.toCharArray()) {
+            h.put(ch, h.getOrDefault(ch, 0) + 1);
+        }
+
+        return h.getOrDefault(c, 0);
     }
 }
