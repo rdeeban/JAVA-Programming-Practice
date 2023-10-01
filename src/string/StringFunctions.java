@@ -78,4 +78,15 @@ public class StringFunctions {
 
         return sb.toString();
     }
+
+    /**
+     * Return whether a string contains only digits
+     */
+    public static boolean stringHasOnlyDigits(String s) {
+        boolean hasOnlyDigits = true;
+        for (char c : s.toCharArray()) {
+            if (c < 48 || c >= 58) hasOnlyDigits = false;
+        }
+        return hasOnlyDigits;
+    }
 }
