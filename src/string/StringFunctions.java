@@ -149,9 +149,57 @@ public class StringFunctions {
     }
 
     /**
-     * Reverse words
+     * Reverse words in a given sentence
      */
     public static String reverseWords(String s) {
-        return null;
+        String[] words = s.split(" ");
+        int numWords = words.length;
+        for (int i = 0; i < numWords / 2; i ++) {
+            int j = numWords - i - 1;
+            String tmp = words[i];
+            words[i] = words[j];
+            words[j] = tmp;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < numWords; i ++) {
+            sb.append(words[i]);
+            if (i < numWords - 1) {
+                sb.append(" ");
+            }
+        }
+
+        return sb.toString();
+    }
+
+    /**
+     * Checks whether two strings are rotations of each other
+     */
+    public static boolean checkTwoStringsAreRotations(String s1, String s2) {
+        int m = s1.length();
+        String s2JoinedWithItself = s2 + s2;
+        int n = s2JoinedWithItself.length();
+        if (m > n) return false;
+
+        for (int i = 0; i < n - m; i ++) {
+            if (s1.equals(s2JoinedWithItself.substring(i, i + m))) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Check whether a given string is a palindrome
+     */
+    public static boolean checkStringIsPalindrome(String s) {
+        int n = s.length();
+        for (int i = 0; i < n / 2; i ++) {
+            int j = n - i - 1;
+            if (s.charAt(i) != s.charAt(j)) return false;
+        }
+
+        return true;
     }
 }
