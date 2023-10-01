@@ -87,6 +87,7 @@ public class StringFunctions {
         for (char c : s.toCharArray()) {
             if (c < 48 || c >= 58) hasOnlyDigits = false;
         }
+
         return hasOnlyDigits;
     }
 }
