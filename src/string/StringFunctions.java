@@ -125,4 +125,33 @@ public class StringFunctions {
 
         return h.getOrDefault(c, 0);
     }
+
+    /**
+     * Find permutations of a given string
+     */
+    public static Set<String> findPermutations(String s) {
+        Set<String> permutations = new HashSet<>();
+        findPermutationsHelper("", s, permutations);
+        return permutations;
+    }
+
+    private static void findPermutationsHelper(String permutationPrefix, String charsLeft, Set<String> permutations) {
+        if (charsLeft.length() == 0) {
+            permutations.add(permutationPrefix.toString());
+            return;
+        }
+
+        for (int i = 0; i < charsLeft.length(); i ++) {
+            String leftStringPart = charsLeft.substring(0, i);
+            String rightStringPart = charsLeft.substring(i + 1);
+            findPermutationsHelper(permutationPrefix + charsLeft.charAt(i), leftStringPart + rightStringPart, permutations);
+        }
+    }
+
+    /**
+     * Reverse words
+     */
+    public static String reverseWords(String s) {
+        return null;
+    }
 }
