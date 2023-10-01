@@ -2,6 +2,7 @@ package string;
 
 import java.util.*;
 import linkedlist.LinkedList;
+import linkedlist.LinkedListFunctions;
 
 public class StringFunctions {
 
@@ -58,16 +59,23 @@ public class StringFunctions {
         return '\0';
     }
 
-//    /**
-//     * Reverse a string using recursion
-//     */
-//    public static String reverse(String s) {
-//        LinkedList<Character> characters = new LinkedList<>();
-//        for (char c : characters)
-//        return null;
-//    }
-//
-//    private static int getFirstLetterIndexOfReversed(int curIndex) {
-//        return 0;
-//    }
+    /**
+     * Reverse a string using recursion
+     */
+    public static String reverseStringUsingRecursion(String s) {
+        LinkedList<Character> list = new LinkedList<>();
+        for (char c : s.toCharArray()) {
+            list.add(c);
+        }
+
+        LinkedListFunctions.reverseLinkedListUsingRecursion(list);
+        StringBuilder sb = new StringBuilder();
+        LinkedList.Node<Character> cur = list.getHead();
+        while (cur != null) {
+            sb.append(cur.data);
+            cur = cur.next;
+        }
+
+        return sb.toString();
+    }
 }

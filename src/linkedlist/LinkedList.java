@@ -2,10 +2,11 @@ package linkedlist;
 
 public class LinkedList<T> {
     Node head;
+    Node tail;
 
-    static class Node<T> {
-        T data;
-        Node next;
+    public static class Node<T> {
+        public T data;
+        public Node next;
         Node(T d)
         {
             data = d;
@@ -17,7 +18,7 @@ public class LinkedList<T> {
      * Constructs a Linked List
      */
     public LinkedList(T... elems) {
-        for (int i = elems.length - 1; i >= 0; i --) {
+        for (int i = 0; i < elems.length; i ++) {
             add(elems[i]);
         }
     }
@@ -37,13 +38,21 @@ public class LinkedList<T> {
         }
     }
 
+    public Node<T> getHead() {
+        return head;
+    }
+
     /**
      * Inserts a new Node at front of the list.
      */
     public void add(T data) {
-        Node newNode = new Node(data);
-        newNode.next = head;
-        head = newNode;
+        if (head == null) {
+            head = new Node<T>(data);
+            tail = head;
+        } else {
+            tail.next = new Node<T>(data);
+            tail = tail.next;
+        }
     }
 
     /**

@@ -43,13 +43,13 @@ public class LinkedListFunctions {
     /**
      * Reverse a Linked List using recursion
      */
-    public static void reverseLinkedListUsingRecursion(LinkedList<Integer> list) {
+    public static void reverseLinkedListUsingRecursion(LinkedList list) {
         if (list.head.next != null) {
             list.head = getHeadOfReversed(list.head);
         }
     }
 
-    private static LinkedList.Node getHeadOfReversed(LinkedList.Node<Integer> node) {
+    private static LinkedList.Node getHeadOfReversed(LinkedList.Node node) {
         if (node.next != null) {
             LinkedList.Node tmp = node.next;
             LinkedList.Node reversed = getHeadOfReversed(node.next);
