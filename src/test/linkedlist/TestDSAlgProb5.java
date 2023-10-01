@@ -9,7 +9,7 @@ public class TestDSAlgProb5 {
 
     @Test
     public void testRemoveDuplicates() {
-        LinkedList list = new LinkedList(1);
+        LinkedList<Integer> list = new LinkedList<>(1);
         LinkedListFunctions.removeDuplicates(list);
         int exp = 1;
         int actual = list.get(0);
@@ -18,7 +18,7 @@ public class TestDSAlgProb5 {
         actual = list.length();
         Assert.assertEquals(exp, actual);
 
-        list = new LinkedList(1, 1);
+        list = new LinkedList<>(1, 1);
         LinkedListFunctions.removeDuplicates(list);
         exp = 1;
         actual = list.get(0);
@@ -27,7 +27,7 @@ public class TestDSAlgProb5 {
         actual = list.length();
         Assert.assertEquals(exp, actual);
 
-        list = new LinkedList(1, 1, 2, 2);
+        list = new LinkedList<>(1, 1, 2, 2);
         LinkedListFunctions.removeDuplicates(list);
         exp = 1;
         actual = list.get(0);

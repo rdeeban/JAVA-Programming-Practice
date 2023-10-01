@@ -1,12 +1,12 @@
 package linkedlist;
 
-public class LinkedList {
+public class LinkedList<T> {
     Node head;
 
-    static class Node {
-        int data;
+    static class Node<T> {
+        T data;
         Node next;
-        Node(int d)
+        Node(T d)
         {
             data = d;
             next = null;
@@ -16,17 +16,17 @@ public class LinkedList {
     /**
      * Constructs a Linked List
      */
-    public LinkedList(int... nums) {
-        for (int i = nums.length - 1; i >= 0; i --) {
-            add(nums[i]);
+    public LinkedList(T... elems) {
+        for (int i = elems.length - 1; i >= 0; i --) {
+            add(elems[i]);
         }
     }
 
     /**
      * Constructs a (Circular) Linked List
      */
-    public LinkedList(boolean circular, int... nums) {
-        this(nums);
+    public LinkedList(boolean circular, T... elems) {
+        this(elems);
         if (circular) {
             Node cur = head;
             while (cur.next != null) {
@@ -40,7 +40,7 @@ public class LinkedList {
     /**
      * Inserts a new Node at front of the list.
      */
-    public void add(int data) {
+    public void add(T data) {
         Node newNode = new Node(data);
         newNode.next = head;
         head = newNode;
@@ -49,17 +49,17 @@ public class LinkedList {
     /**
      * Gets the node at index
      */
-    public int get(int index) {
+    public T get(int index) {
         Node cur = head;
         int curIndex = 0;
         while (cur.next != null) {
-            if (curIndex == index) return cur.data;
+            if (curIndex == index) return (T) cur.data;
             cur = cur.next;
             curIndex ++;
         }
 
         if (cur == null) throw new IllegalArgumentException(String.format("Invalid index: %d", index));
-        return cur.data;
+        return (T) cur.data;
     }
 
     public int length() {

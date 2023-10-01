@@ -9,7 +9,7 @@ public class LinkedListFunctions {
     /**
      * Find the middle element of a singly linked list in one pass
      */
-    public static int findMiddleElement(LinkedList list) {
+    public static int findMiddleElement(LinkedList<Integer> list) {
         LinkedList.Node slow = list.head;
         LinkedList.Node fast = list.head;
         while(fast != null && fast.next != null) {
@@ -18,13 +18,13 @@ public class LinkedListFunctions {
         }
 
         assert slow != null;
-        return slow.data;
+        return (int) slow.data;
     }
 
     /**
      * Check if a linked list contains a cycle
      */
-    public static boolean containsCycle(LinkedList list) {
+    public static boolean containsCycle(LinkedList<Integer> list) {
         LinkedList.Node slow = list.head;
         LinkedList.Node fast = list.head;
         int numIters = 0;
@@ -43,13 +43,13 @@ public class LinkedListFunctions {
     /**
      * Reverse a Linked List using recursion
      */
-    public static void reverseLinkedListUsingRecursion(LinkedList list) {
+    public static void reverseLinkedListUsingRecursion(LinkedList<Integer> list) {
         if (list.head.next != null) {
             list.head = getHeadOfReversed(list.head);
         }
     }
 
-    private static LinkedList.Node getHeadOfReversed(LinkedList.Node node) {
+    private static LinkedList.Node getHeadOfReversed(LinkedList.Node<Integer> node) {
         if (node.next != null) {
             LinkedList.Node tmp = node.next;
             LinkedList.Node reversed = getHeadOfReversed(node.next);
@@ -64,7 +64,7 @@ public class LinkedListFunctions {
     /**
      * Reverse a Linked List using a loop
      */
-    public static void reverseLinkedListUsingLoop(LinkedList list) {
+    public static void reverseLinkedListUsingLoop(LinkedList<Integer> list) {
         LinkedList.Node cur = list.head;
         if (cur.next != null) {
             LinkedList.Node next = cur.next;
@@ -85,11 +85,11 @@ public class LinkedListFunctions {
     /**
      * Remove duplicates in a Linked List
      */
-    public static void removeDuplicates(LinkedList list) {
-        LinkedList.Node cur = list.head;
+    public static void removeDuplicates(LinkedList<Integer> list) {
+        LinkedList.Node<Integer> cur = list.head;
         Set<Integer> seen = new HashSet<>();
         seen.add(cur.data);
-        LinkedList.Node next;
+        LinkedList.Node<Integer> next;
         while (cur.next != null) {
             next = cur.next;
             if (seen.contains(next.data)) {
@@ -105,9 +105,9 @@ public class LinkedListFunctions {
     /**
      * Find the third node's data from the end
      */
-    public static int findThirdNodeFromEnd(LinkedList list) {
-        LinkedList.Node cur = list.head;
-        LinkedList.Node twoAfterCur = cur;
+    public static int findThirdNodeFromEnd(LinkedList<Integer> list) {
+        LinkedList.Node<Integer> cur = list.head;
+        LinkedList.Node<Integer> twoAfterCur = cur;
         twoAfterCur = twoAfterCur.next;
         twoAfterCur = twoAfterCur.next;
         while (twoAfterCur.next != null) {
@@ -121,7 +121,7 @@ public class LinkedListFunctions {
     /**
      * Find the sum of two linked lists using Stack
      */
-    public static int findSum(LinkedList list1, LinkedList list2) {
+    public static int findSum(LinkedList<Integer> list1, LinkedList<Integer> list2) {
         Stack<Integer> stack1 = getStackFromLinkedList(list1);
         Stack<Integer> stack2 = getStackFromLinkedList(list2);
         int sum = 0;
@@ -162,9 +162,9 @@ public class LinkedListFunctions {
         return sum;
     }
 
-    private static Stack<Integer> getStackFromLinkedList(LinkedList list) {
+    private static Stack<Integer> getStackFromLinkedList(LinkedList<Integer> list) {
         Stack<Integer> stack = new Stack<>();
-        LinkedList.Node cur = list.head;
+        LinkedList.Node<Integer> cur = list.head;
         while (cur != null) {
             stack.push(cur.data);
             cur = cur.next;

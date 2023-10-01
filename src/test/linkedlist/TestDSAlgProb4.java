@@ -9,19 +9,19 @@ public class TestDSAlgProb4 {
 
     @Test
     public void testReverseLinkedListUsingLoop() {
-        LinkedList list = new LinkedList(1);
+        LinkedList<Integer> list = new LinkedList<>(1);
         LinkedListFunctions.reverseLinkedListUsingLoop(list);
         int exp = list.get(0);
         Assert.assertEquals(exp, 1);
 
-        list = new LinkedList(1, 2);
+        list = new LinkedList<>(1, 2);
         LinkedListFunctions.reverseLinkedListUsingLoop(list);
         exp = list.get(0);
         Assert.assertEquals(exp, 2);
         exp = list.get(1);
         Assert.assertEquals(exp, 1);
 
-        list = new LinkedList(1, 2, 3);
+        list = new LinkedList<>(1, 2, 3);
         LinkedListFunctions.reverseLinkedListUsingLoop(list);
         exp = list.get(0);
         Assert.assertEquals(exp, 3);
@@ -30,7 +30,7 @@ public class TestDSAlgProb4 {
         exp = list.get(2);
         Assert.assertEquals(exp, 1);
 
-        list = new LinkedList(1, 2, 3, 4);
+        list = new LinkedList<>(1, 2, 3, 4);
         LinkedListFunctions.reverseLinkedListUsingLoop(list);
         exp = list.get(0);
         Assert.assertEquals(exp, 4);

@@ -9,11 +9,11 @@ public class TestDSAlgProb7 {
 
     @Test
     public void testFindThirdNodeFromEnd() {
-        LinkedList list = new LinkedList(1, 2, 3);
+        LinkedList<Integer> list = new LinkedList<>(1, 2, 3);
         int data = LinkedListFunctions.findThirdNodeFromEnd(list);
         Assert.assertEquals(1, data);
 
-        list = new LinkedList(1, 2, 3, 4);
+        list = new LinkedList<>(1, 2, 3, 4);
         data = LinkedListFunctions.findThirdNodeFromEnd(list);
         Assert.assertEquals(2, data);
     }
